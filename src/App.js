@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import Forest from "./components/Forest";
 import findAndChange from './utils/findAndChange';
+import findAndAppend from './utils/findAndAppend';
 
 const App = () => {
   const [trees, setTree] = useState([
@@ -50,6 +51,13 @@ const App = () => {
     }
   ]);
 
+  const onAppend = useCallback(
+    id => {
+      setTree(trees.map(root => findAndAppend(id, root)));
+    },
+    [trees]
+  )
+
   const onToggle = useCallback(
     id => {
       setTree(trees.map(root => findAndChange(id, root)));
@@ -59,7 +67,7 @@ const App = () => {
 
   return (
     <div>
-      <Forest trees={trees} onToggle={onToggle} />
+      <Forest trees={trees} onToggle={onToggle} onAppend={onAppend}/>
     </div>
   );
 };
