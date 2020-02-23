@@ -1,0 +1,24 @@
+.Node {
+  display: flex;
+}
+
+.checkbox {
+  cursor: pointer;
+  display: flex;
+  svg {
+    font-size: 1.5rem;
+  }
+  &.checked {
+    .text {
+      text-decoration: line-through
+    }
+  }
+}
+
+.add {
+  display: flex;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
