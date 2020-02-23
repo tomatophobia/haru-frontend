@@ -1,16 +1,6 @@
 import React, { useState, useCallback } from "react";
 import Forest from "./components/Forest";
-
-const findAndChange = (id, node) => {
-  if (id[0] === node.id[0]) {
-    return traverseAndChange(id, node);
-  } else return node;
-};
-
-const traverseAndChange = (id, node) => {
-  if (node.id[node.level] === id[node.level]) return { ...node, checked: !node.checked };
-  else return node.child.map(ch => traverseAndChange(id, ch));
-};
+import findAndChange from './utils/findAndChange';
 
 const App = () => {
   const [trees, setTree] = useState([
