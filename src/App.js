@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import Forest from "./components/Forest";
 import findAndChange from './utils/findAndChange';
 import findAndAppend from './utils/findAndAppend';
+import findAndRemove from './utils/findAndRemove';
 
 const App = () => {
   const [trees, setTree] = useState([
@@ -65,9 +66,16 @@ const App = () => {
     [trees]
   );
 
+  const onRemove = useCallback(
+    id => {
+      setTree(trees.map(root => findAndRemove(id, root)));
+    },
+    [trees]
+  )
+
   return (
     <div>
-      <Forest trees={trees} onToggle={onToggle} onAppend={onAppend}/>
+      <Forest trees={trees} onToggle={onToggle} onAppend={onAppend} onRemove={onRemove}/>
     </div>
   );
 };
