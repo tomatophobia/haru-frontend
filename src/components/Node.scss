@@ -2,6 +2,12 @@
   display: flex;
 }
 
+.remove {
+  display: flex;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .checkbox {
   cursor: pointer;
   display: flex;
