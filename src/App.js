@@ -1,8 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Forest from "./components/Forest";
-import findAndChange from "./utils/findAndChange";
-import findAndAppend from "./utils/findAndAppend";
-import findAndRemove from "./utils/findAndRemove";
+import {findAndAppend, findAndCheck, findAndRemove} from "./utils/findAndUpdate"
 import axios from "axios";
 
 const App = () => {
@@ -18,7 +16,7 @@ const App = () => {
 
   const onToggle = useCallback(
     id => {
-      setTrees(trees.map(root => findAndChange(id, root)));
+      setTrees(trees.map(root => findAndCheck(id, root)));
     },
     [trees]
   );

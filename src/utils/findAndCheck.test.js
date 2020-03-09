@@ -1,4 +1,4 @@
-import { findAndRemove } from "./findAndUpdate";
+import { findAndCheck } from "./findAndUpdate";
 
 const trees = [
   {
@@ -66,6 +66,13 @@ const trees_after = [
             text: "프로젝트 디자인",
             checked: false,
             child: []
+          },
+          {
+            id: [0, 0, 1],
+            level: 2,
+            text: "본격 프로그래밍",
+            checked: true,
+            child: []
           }
         ]
       },
@@ -87,7 +94,7 @@ const trees_after = [
   }
 ];
 
-test("simple remove test", () => {
+test("simple change test", () => {
   const id = [0, 0, 1];
-  expect(trees.map(root => findAndRemove(id, root))).toEqual(trees_after);
+  expect(trees.map(root => findAndCheck(id, root))).toEqual(trees_after);
 });
