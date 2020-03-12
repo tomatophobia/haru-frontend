@@ -8,11 +8,9 @@ const Node = ({ todo, onToggle, onAppend, onRemove }) => {
 
   return (
     <div className={`Node level${level}`}>
-      {id.length !== 1 && (
-        <div className="remove" onClick={() => onRemove(id)}>
-          <RemoveCircle />
-        </div>
-      )}
+      <div className="remove" onClick={() => onRemove(id)}>
+        <RemoveCircle />
+      </div>
       <div className={cn("checkbox", { checked })} onClick={() => onToggle(id)}>
         <div className="text">{text}</div>
       </div>
