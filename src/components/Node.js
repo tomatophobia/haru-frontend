@@ -14,7 +14,7 @@ const Node = ({ todo, onToggle, onAppend, onRemove }) => {
       <div className={cn("checkbox", { checked })} onClick={() => onToggle(id)}>
         <div className="text">{text}</div>
       </div>
-      <div className="add" onClick={() => onAppend(id)}>
+      <div className="add" onClick={() => onAppend(id.concat(-1))}>
         <AddCircle />
       </div>
     </div>

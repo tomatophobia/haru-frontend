@@ -1,4 +1,4 @@
-import { findAndCheck } from "./findAndUpdate";
+import { updateTrees, findAndCheck } from "./findAndUpdate";
 
 const trees = [
   {
@@ -96,5 +96,5 @@ const trees_after = [
 
 test("simple change test", () => {
   const id = [0, 0, 1];
-  expect(trees.map(root => findAndCheck(id, root))).toEqual(trees_after);
+  expect(updateTrees(id, trees, findAndCheck)).toEqual(trees_after);
 });

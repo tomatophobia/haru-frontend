@@ -1,4 +1,4 @@
-import { findAndAppend } from "./findAndUpdate";
+import { updateTrees, findAndAppend } from "./findAndUpdate";
 
 const trees = [
   {
@@ -103,5 +103,5 @@ const trees_after = [
 
 test("simple append test", () => {
   const id = [0, 0];
-  expect(trees.map(root => findAndAppend(id, root))).toEqual(trees_after);
+  expect(updateTrees(id.concat(-1), trees, findAndAppend)).toEqual(trees_after);
 });
