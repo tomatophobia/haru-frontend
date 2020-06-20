@@ -4,7 +4,8 @@ import {
   updateTrees,
   findAndAppend,
   findAndCheck,
-  findAndRemove
+  findAndRemove,
+  findAndChangeWithText
 } from "./utils/findAndUpdate";
 import axios from "axios";
 import { AddCircle } from "@material-ui/icons";
@@ -33,6 +34,14 @@ const App = () => {
     [trees]
   );
 
+  const onChange = useCallback(
+    (id, newText) => {
+      const findAndChange = findAndChangeWithText(newText);
+      setTrees(updateTrees(id, trees, findAndChange));
+    },
+    [trees]
+  )
+
   useEffect(() => {
     const initialize = async () => {
       try {
@@ -52,6 +61,7 @@ const App = () => {
         onToggle={onToggle}
         onAppend={onAppend}
         onRemove={onRemove}
+        onChange={onChange}
       />
       <div className="add" onClick={() => onAppend([-1])}>
         <AddCircle />
