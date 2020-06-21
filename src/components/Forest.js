@@ -1,7 +1,7 @@
 import React from "react";
 import Tree from "./Tree";
 
-const Forest = ({ trees, onToggle, onAppend, onRemove }) => {
+const Forest = ({ trees, onToggle, onAppend, onRemove, onChange }) => {
   return (
     <div>
       {trees.map(root => {
@@ -12,6 +12,7 @@ const Forest = ({ trees, onToggle, onAppend, onRemove }) => {
             onToggle={onToggle}
             onAppend={onAppend}
             onRemove={onRemove}
+            onChange={onChange}
           />
         );
       })}
