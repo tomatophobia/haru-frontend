@@ -9,7 +9,7 @@ const Node = ({ todo, onToggle, onAppend, onRemove, onChange }) => {
   const { id, text, checked, level } = todo;
 
   const [title, setTitle] = useState("");
-  const onChangeTitle = e => setTitle(e.target.value);
+  const onChangeTitle = (e) => setTitle(e.target.value);
 
   return (
     <div className={`Node level${level}`}>
@@ -18,6 +18,7 @@ const Node = ({ todo, onToggle, onAppend, onRemove, onChange }) => {
       </div>
       <div className={cn("checkbox", { checked })}>
         <div>
+          {/* react contextmenu: https://github.com/vkbansal/react-contextmenu/tree/c68325039d241575b4fd624359a6b052129a6bac */}
           <ContextMenuTrigger id={id.join(",")}>
             <div className="text" onClick={() => onToggle(id)}>
               {text}
