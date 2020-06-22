@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
 import "./Node.scss";
 import "./react-contextmenu.css";
@@ -7,6 +7,9 @@ import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 const Node = ({ todo, onToggle, onAppend, onRemove, onChange }) => {
   const { id, text, checked, level } = todo;
+
+  const [title, setTitle] = useState("");
+  const onChangeTitle = e => setTitle(e.target.value);
 
   return (
     <div className={`Node level${level}`}>
@@ -22,19 +25,22 @@ const Node = ({ todo, onToggle, onAppend, onRemove, onChange }) => {
           </ContextMenuTrigger>
 
           <ContextMenu id={id.join(",")}>
-            <MenuItem
-              className="react-contextmenu-item"
-            >
-              <input id={id.join(",")} placeholder="목표를 입력하세요" value="" onClick={(e) => {
-                e.stopPropagation();
-                // TODO input 상태관리 사용해서 input 값 변경 구현
-              }}/>
+            <MenuItem className="react-contextmenu-item">
+              <input
+                type="text"
+                name="title"
+                placeholder="목표를 입력하세요"
+                value={title}
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                onChange={onChangeTitle}
+              />
             </MenuItem>
             <MenuItem
               className="react-contextmenu-item"
               onClick={() => {
-                onChange(id, "123");
-                // TODO 관리하고 있는 input state 값 가지고 와서 두 번째 인자에 넣어주기
+                onChange(id, title);
               }}
             >
               이름변경
